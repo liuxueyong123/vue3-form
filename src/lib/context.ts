@@ -18,5 +18,5 @@ export const useFormItemContext = () => {
     throw new Error("error: key doesn't exist in context")
   }
 
-  return context.SchemaItem
+  return context
 }

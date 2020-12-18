@@ -7,7 +7,7 @@ export default defineComponent({
   name: 'ObjectField',
   props: FormComponentProps,
   setup (props) {
-    const SchemaItem = useFormItemContext()
+    const { SchemaItem } = useFormItemContext()
 
     const handleChange = (key: string, v: any) => {
       // const value: any = isObject(props.value) ? props.value : {}

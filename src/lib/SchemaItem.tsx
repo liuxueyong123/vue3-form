@@ -3,6 +3,7 @@ import { FormComponentProps, SchemaType } from './types'
 import StringField from './fields/StringField'
 import NumberField from './fields/NumberField'
 import ObjectField from './fields/ObjectFields'
+import ArrayField from './fields/ArrayField'
 import ErrorSchema from './ErrorSchema'
 
 export default defineComponent({
@@ -21,6 +22,9 @@ export default defineComponent({
           break
         case SchemaType.OBJECT:
           Component = ObjectField
+          break
+        case SchemaType.ARRAY:
+          Component = ArrayField
           break
         default:
           break

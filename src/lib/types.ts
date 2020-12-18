@@ -13,6 +13,8 @@ interface Schema {
   type: SchemaType | string;
   properties?: Record<string, Schema>;
   required?: string[];
+  items?: Schema[] | Schema;
+  enum?: Array<string | number>;
 }
 
 const FormComponentProps = {

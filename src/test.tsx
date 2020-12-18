@@ -4,21 +4,22 @@ import MonacoEditor from './components/MonacoEditor'
 import SchemaForm from './lib'
 import { SchemaType, Schema } from './lib/types'
 
-const formValues = {
-  name: 'Liu Xueyong',
-  age: 22
-}
+const formValues = ['red']
 const schema: Schema = {
-  type: SchemaType.OBJECT,
-  properties: {
-    name: {
-      type: SchemaType.STRING
-    },
-    age: {
-      type: SchemaType.NUMBER
-    }
-  },
-  required: ['name', 'age']
+  type: SchemaType.ARRAY,
+  items: {
+    type: SchemaType.STRING,
+    enum: ['red', 'green', 'yellow', 'blue']
+  }
+  // properties: {
+  //   name: {
+  //     type: SchemaType.STRING
+  //   },
+  //   age: {
+  //     type: SchemaType.NUMBER
+  //   }
+  // },
+  // required: ['name', 'age']
 }
 
 const toJson = (data: any) => {
@@ -69,7 +70,9 @@ export default defineComponent({
             <MonacoEditor name='uiSchema' value={toJson(schemaValue)} onChange={schemaChange} />
             <MonacoEditor name='formValues' value={toJson(formValues)} onChange={() => null} />
           </div>
-          <SchemaForm class={classes.rightContent} schema={schemaValue} value={formValues} onChange={onFormChange} />
+          <div class={classes.rightContent}>
+            <SchemaForm schema={schemaValue} value={formValues} onChange={onFormChange} />
+          </div>
         </div>
       )
     }
