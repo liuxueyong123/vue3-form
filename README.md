@@ -7,17 +7,22 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn start
 ```
 
-### Compiles and minifies for production
+### Compiles lib for production
 ```
-yarn build
+yarn build:core
+```
+
+### Compiles form theme for production
+```
+yarn build:theme
 ```
 
 ### Run your unit tests
 ```
-yarn test:unit
+yarn test
 ```
 
 ### Lints and fixes files
