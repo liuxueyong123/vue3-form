@@ -1,15 +1,16 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, DefineComponent } from 'vue'
 import { createUseStyles } from 'vue-jss'
 import MonacoEditor from './components/MonacoEditor'
-import SchemaForm from './lib'
+import SchemaForm, { ThemeProvider } from './lib'
 import { SchemaType, Schema } from './lib/types'
+import defaultTheme from './lib/theme-default'
 
-const formValues = ['red']
+const formValues = ['green']
 const schema: Schema = {
   type: SchemaType.ARRAY,
   items: {
-    type: SchemaType.STRING,
-    enum: ['red', 'green', 'yellow', 'blue']
+    type: SchemaType.STRING
+    // enum: ['red', 'green', 'yellow', 'blue']
   }
   // properties: {
   //   name: {
@@ -71,7 +72,9 @@ export default defineComponent({
             <MonacoEditor name='formValues' value={toJson(formValues)} onChange={() => null} />
           </div>
           <div class={classes.rightContent}>
-            <SchemaForm schema={schemaValue} value={formValues} onChange={onFormChange} />
+            <ThemeProvider theme={defaultTheme}>
+              <SchemaForm schema={schemaValue} value={formValues} onChange={onFormChange} />
+            </ThemeProvider>
           </div>
         </div>
       )

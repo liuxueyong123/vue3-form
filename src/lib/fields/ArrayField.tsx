@@ -1,7 +1,7 @@
 import { defineComponent, PropType } from 'vue'
 import { FormComponentProps, Schema } from '../types'
-import { useFormItemContext } from '../context'
-import SelectionWidget from '../widges/Selection'
+import { useFormItemContext, useTheme } from '../context'
+import { getWidget } from '../theme'
 // import { isObject } from '../utils'
 
 const HandlerWrapper = defineComponent({
@@ -115,11 +115,14 @@ export default defineComponent({
 
     const isHaveEnum = props.schema.items && (props.schema.items as Schema).enum
     if (isHaveEnum) {
+      const SelectionWidgetRef = getWidget('SelectionWidget')
+
       return () => {
         const value = props.value as any[]
         const options = (props.schema.items as Schema).enum as (string | number)[]
+        const SelectionWidget = SelectionWidgetRef.value
 
-        return <SelectionWidget options={options} initialValue={value} onChange={(v) => props.onChange(v)} />
+        return <SelectionWidget options={options} initialValue={value} onChange={(v: any) => props.onChange(v)} />
       }
     } else {
       return () => {

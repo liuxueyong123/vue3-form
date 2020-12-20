@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "build:core": "TYPE=lib vue-cli-service build --target lib --name index src/lib/index.ts",
+    "build:theme": "TYPE=lib vue-cli-service build --target lib --name theme-default/index src/lib/theme-default/index.tsx",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

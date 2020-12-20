@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
 // import App from './App'
-import App from './test'
+import TestApp from './test'
 
-createApp(App).mount('#app')
+const app = createApp(TestApp)
+
+// handle error
+app.config.errorHandler = (err) => {
+  alert(err)
+}
+
+app.mount('#app')

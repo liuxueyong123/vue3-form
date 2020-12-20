@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { PropType, defineComponent } from 'vue'
 
 enum SchemaType {
   NUMBER = 'number',
@@ -31,8 +31,44 @@ const FormComponentProps = {
   }
 } as const
 
+const commonWidgetProps = {
+  initialValue: {
+    type: Array as PropType<any[]>,
+    required: true
+  },
+  onChange: {
+    type: Function as PropType<(v: any) => void>,
+    required: true
+  }
+} as const
+
+const selectionWidgetProps = {
+  ...commonWidgetProps,
+  options: {
+    type: Array as PropType<any[]>,
+    required: true
+  }
+} as const
+
+const SelectionWidgetDefined = defineComponent({
+  props: selectionWidgetProps
+})
+
+type SelectionWidgetComponent = typeof SelectionWidgetDefined
+
+interface Widgets {
+  SelectionWidget: SelectionWidgetComponent;
+}
+
+interface Theme {
+  widgets: Widgets;
+}
+
 export {
   SchemaType,
   Schema,
-  FormComponentProps
+  FormComponentProps,
+  selectionWidgetProps,
+  Widgets,
+  Theme
 }

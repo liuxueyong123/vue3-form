@@ -1,17 +1,17 @@
 import { defineComponent, provide } from 'vue'
 import { FormComponentProps } from './types'
 import SchemaItem from './SchemaItem'
-import { FormItemContext } from './context'
-
-const context = {
-  SchemaItem: SchemaItem
-}
+import { FORM_ITEM_CONTEXT, FormItemContext } from './context'
 
 export default defineComponent({
   name: 'SchemaForm',
   props: FormComponentProps,
   setup (props) {
-    provide(FormItemContext, context)
+    const context: FormItemContext = {
+      SchemaItem: SchemaItem
+    }
+
+    provide(FORM_ITEM_CONTEXT, context)
 
     return () => {
       return <SchemaItem {...props} />
